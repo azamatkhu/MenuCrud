@@ -6,7 +6,7 @@ public class MainMenuCrud {
         int opcion = -1;
         Scanner sc = new Scanner(System.in);
         String sql = "";
-
+        // Bucle while para manejar el menu
         while(opcion != 0) {
             System.out.println("----- MENU SQL------");
             System.out.println("1. Insertar empleado");
@@ -19,7 +19,7 @@ public class MainMenuCrud {
 
             opcion = sc.nextInt();
             sc.nextLine();
-
+            // Conexion a database
             try {
                 Connection connection = DriverManager.getConnection(
                         "jdbc:oracle:thin:@localhost:1521:xe",
@@ -33,6 +33,8 @@ public class MainMenuCrud {
 
                 PreparedStatement ps;
 
+                // Switch para manejar los opciones
+                // Cada case tiene su propia sql consulta
                 switch(opcion) {
                     case 1:
                         System.out.println("Introduce el identificador del empleado: ");
@@ -74,6 +76,7 @@ public class MainMenuCrud {
 
                         System.out.println("Que campo quieres actualizar? ");
                         String campo = sc.nextLine();
+                        // Aqui ponemos un switch, para saber que campo exacto quieremos actualizar
                         switch(campo) {
                             case "nombre":
                                 System.out.println("Introduce el nombre del empleado: ");
